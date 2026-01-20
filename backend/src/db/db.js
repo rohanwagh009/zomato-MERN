@@ -4,13 +4,14 @@
 const mongoose = require("mongoose");
 
 function connectDB() {
-  mongoose.connect("mongodb://localhost:27017/food-view").then(() => {
-    console.log("MongoDB connected");
-  })
-  .catch((error)=> {
-    console.log("MongoDB connection error: ", error);
-    
-  })
+  mongoose
+    .connect(process.env.MONGODB_URI)
+    .then(() => {
+      console.log("MongoDB connected");
+    })
+    .catch((error) => {
+      console.log("MongoDB connection error: ", error);
+    });
 }
 
-module.exports = connectDB
+module.exports = connectDB;
