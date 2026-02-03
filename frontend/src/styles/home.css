@@ -1,0 +1,136 @@
+/* Video Feed Container */
+.video-feed-container {
+  height: 100vh;
+  width: 100vw;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  background-color: #000;
+  position: relative;
+  /* Hide scrollbar */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.video-feed-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual Video Card */
+.video-card {
+  height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: #1a1a1a;
+}
+
+/* The Video Element */
+.video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Interaction Sidebar (Right) */
+.interaction-sidebar {
+  position: absolute;
+  right: 10px;
+  bottom: 120px; /* Above bottom nav and description */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  z-index: 20;
+}
+
+.interaction-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  cursor: pointer;
+}
+
+.interaction-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 5px;
+  fill: white;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+  transition: transform 0.2s;
+}
+
+.interaction-item:active .interaction-icon {
+  transform: scale(0.9);
+}
+
+.interaction-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Overlay Content (Bottom Left) */
+.video-overlay {
+  position: absolute;
+  bottom: 60px; /* Space for BottomNav */
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  color: white;
+  box-sizing: border-box;
+  pointer-events: none; /* Let clicks pass through if needed, but button needs pointer-events: auto */
+}
+
+/* Address pointer-events for children */
+.video-overlay > * {
+  pointer-events: auto;
+}
+
+/* Description Text */
+.video-description {
+  font-size: 1rem;
+  line-height: 1.4;
+  margin: 0;
+  max-width: 80%; /* Leave space for right sidebar if they overlap, though sidebar is higher */
+  
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Visit Store Button */
+.visit-store-btn {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  display: inline-block;
+}
+
+.visit-store-btn:hover {
+  background-color: white;
+  color: black;
+}
+

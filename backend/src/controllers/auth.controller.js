@@ -1,7 +1,6 @@
 // authenticaion logics written here
 
 const userModel = require("../models/user.model");
-const foddPartnerModel = require("../models/foodpartner.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const foodPartnerModel = require("../models/foodpartner.model");
@@ -53,7 +52,7 @@ async function loginUser(req, res) {
   });
 
   if (!user) {
-    res.status(400).json({
+    return res.status(400).json({
       message: "Invalid email or password",
     });
   }
@@ -93,14 +92,15 @@ async function logoutUser(req, res) {
 }
 
 async function registerFoodPartner(req, res) {
-  const { name, email, password, phone, address, contactName } = req.body;
+  console.log("Received Register Body:", req.body);
+  const { name, businessName, email, password, phone, address, contactName } = req.body;
 
   const isAccountAlreadyExists = await foodPartnerModel.findOne({
     email,
   });
 
   if (isAccountAlreadyExists) {
-    res.status(400).json({
+    return res.status(400).json({
       message: "Food partner account already exists",
     });
   }
@@ -108,7 +108,7 @@ async function registerFoodPartner(req, res) {
   const hashedPassword = await bcrypt.hash(password, 10);
 
   const foodPartner = await foodPartnerModel.create({
-    name,
+    name: name || businessName,
     email,
     password: hashedPassword,
     phone,
@@ -118,7 +118,7 @@ async function registerFoodPartner(req, res) {
 
   const token = jwt.sign(
     {
-      id: foddPartnerModel._id,
+      id: foodPartner._id,
     },
     process.env.JWT_SECRET,
   );
@@ -148,7 +148,7 @@ async function loginFoodPartner(req,res){
   })
 
   if(!foodPartner){
-    res.status(400).json({
+    return res.status(400).json({
       message:"Email or password is invalid"
     })
   }
@@ -176,10 +176,6 @@ async function loginFoodPartner(req,res){
       name: foodPartner.name
     }
   })
-
-
-
-
 }
 
 
@@ -189,12 +185,6 @@ async function logoutFoodPartner(req,res){
     message:"Food partner logged out successfully"
   })
 }
-
-
-
-
-
-
 
 module.exports = {
   registerUser,

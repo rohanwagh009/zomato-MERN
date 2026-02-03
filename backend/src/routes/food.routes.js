@@ -3,6 +3,8 @@ const foodController = require("../controllers/food.controller");
 const authMiddleware = require("../middlewares/auth.middleware");
 const router = express.Router();
 const multer = require("multer");
+const likeModel = require("../models/likes.model");
+
 
 const upload = multer({
   Storage: multer.memoryStorage(),
@@ -20,6 +22,19 @@ router.post(
 /* GET/api/food [protected]  */ 
 
 router.get("/",authMiddleware.authUserMiddleware,foodController.getFoodItems)
+
+router.post("/like",authMiddleware.authUserMiddleware,foodController.likeFood)
+
+router.post('/save',authMiddleware.authUserMiddleware,foodController.saveFood)
+
+router.get('/saved', authMiddleware.authUserMiddleware, foodController.getSavedFood)
+
+router.get('/liked', authMiddleware.authUserMiddleware, foodController.getLikedFood)
+
+
+
+
+
 
 
 

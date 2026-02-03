@@ -1,0 +1,181 @@
+/* src/styles/create-food.css */
+
+/* Mobile-first Container */
+.create-food-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.header-title {
+  margin-bottom: 2rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.create-food-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Form Groups */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Inputs & Textarea */
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border-radius: 10px;
+  border: 1.5px solid var(--input-border);
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+  font-family: inherit;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--input-focus);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(239, 79, 95, 0.15); /* using accent color opacity */
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--text-tertiary);
+}
+
+.form-textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* Video Input - Custom Styling */
+.file-input-wrapper {
+  position: relative;
+  border: 2px dashed var(--border-color);
+  border-radius: 12px;
+  padding: 3rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  background-color: var(--bg-secondary);
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+.file-input-wrapper:hover {
+  border-color: var(--accent-primary);
+  background-color: var(--input-bg);
+}
+
+.file-input-wrapper.has-file {
+  border-style: solid;
+  border-color: var(--success-color);
+}
+
+/* Actual file input hidden but covers the area for click */
+.file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.file-input-icon {
+  font-size: 2.5rem;
+  color: var(--text-tertiary);
+  transition: color var(--transition-fast);
+}
+
+.file-input-wrapper:hover .file-input-icon {
+  color: var(--accent-primary);
+}
+
+.file-input-text {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.file-preview {
+  margin-top: 1rem;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  max-height: 200px;
+  object-fit: cover;
+  display: none;
+}
+.file-preview.visible {
+  display: block;
+}
+
+/* Submit Button */
+.submit-btn {
+  background-color: var(--accent-primary);
+  color: #fff;
+  border: none;
+  padding: 1rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: transform var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: var(--shadow-md);
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Tablet & Desktop Adjustments */
+@media (min-width: 768px) {
+  .create-food-container {
+    max-width: 600px;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    padding: 2.5rem;
+    background-color: var(--bg-primary);
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-light);
+  }
+}

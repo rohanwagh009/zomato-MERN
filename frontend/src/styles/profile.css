@@ -1,0 +1,114 @@
+/* Global reset/defaults for this page scope */
+.profile-page {
+    font-family: 'Inter', sans-serif; /* or system default */
+    background-color: #0d0d0d; /* Dark background */
+    min-height: 100vh;
+    padding: 24px;
+    padding-bottom: 80px;
+    max-width: 600px; /* Mobile-ish view width restriction */
+    margin: 0 auto;
+    color: #e0e0e0; /* Light text */
+}
+
+/* Header Section */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.profile-avatar-container {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+}
+
+.profile-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e0e0e0; /* Light border */
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.profile-name {
+    font-size: 1.5rem;
+    font-weight: 700; /* Bold/Scripty look in sketch */
+    margin: 0;
+    line-height: 1.2;
+    color: #ffffff;
+}
+
+.profile-contact {
+    font-size: 1.1rem;
+    font-weight: 500; /* Slightly thinner */
+    margin: 0;
+    font-family: monospace, sans-serif; /* Mimic the handwritten look slightly? or just clean sans */
+    color: #b0b0b0;
+}
+
+/* Stats Section */
+.profile-stats {
+    display: flex;
+    justify-content: space-around; /* Distribute evenly */
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.profile-stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.profile-stat-label {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #b0b0b0; /* Light grey */
+    font-family: cursive; /* Matching the sketch 'handwritten' vibe potentially, or just clean sans */
+    font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif; /* Trying to match the sketch style */
+}
+
+.profile-stat-value {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+/* Video Grid Section */
+.profile-video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.profile-video-card {
+    aspect-ratio: 3/4; /* Vertical rectangle */
+    background-color: #1a1a1a; /* Dark placeholder */
+    border-radius: 16px; /* Rounded corners as per sketch */
+    overflow: hidden;
+    border: 2px solid #444; /* Subtle dark grey border */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-video-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-video-placeholder-text {
+    font-family: 'Comic Sans MS', cursive;
+    font-size: 1rem;
+    color: #666;
+}

@@ -19,8 +19,8 @@ router.get('/user/logout',authController.logoutUser)
 //foodPartner Auth APIs
 
 
-router.post('/foodpartner/register',authController.registerFoodPartner)
-router.post('/foodpartner/login', authController.loginFoodPartner)
-router.get('/foodpartner/logout', authController.logoutFoodPartner)
+router.post('/food-partner/register',authController.registerFoodPartner)
+router.post('/food-partner/login', authController.loginFoodPartner)
+router.get('/food-partner/logout', authController.logoutFoodPartner)
 
 module.exports = router;
