@@ -1,11 +1,21 @@
+/* Global reset for full screen video */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #000;
+}
+
 /* Video Feed Container */
 .video-feed-container {
-  height: 100vh;
-  width: 100vw;
+  width: 100%;
+  height: 100%;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   background-color: #000;
-  position: relative;
+  
   /* Hide scrollbar */
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -17,19 +27,22 @@
 
 /* Individual Video Card */
 .video-card {
-  height: 100vh;
+  min-height: 100vh; /* Force minimum full viewport height */
+  height: 100vh; /* Explicit height */
   width: 100%;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: #000;
   overflow: hidden;
-  background-color: #1a1a1a;
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 /* The Video Element */
 .video-player {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -40,7 +53,7 @@
 .interaction-sidebar {
   position: absolute;
   right: 10px;
-  bottom: 120px; /* Above bottom nav and description */
+  bottom: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,11 +91,12 @@
 /* Overlay Content (Bottom Left) */
 .video-overlay {
   position: absolute;
-  bottom: 60px; /* Space for BottomNav */
+  bottom: 0;
   left: 0;
   width: 100%;
   padding: 20px;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  padding-bottom: 80px; /* Reduced padding */
+  background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.3) 40%, transparent 100%); /* Lighter gradient */
   z-index: 10;
   display: flex;
   flex-direction: column;
@@ -90,10 +104,9 @@
   gap: 12px;
   color: white;
   box-sizing: border-box;
-  pointer-events: none; /* Let clicks pass through if needed, but button needs pointer-events: auto */
+  pointer-events: none;
 }
 
-/* Address pointer-events for children */
 .video-overlay > * {
   pointer-events: auto;
 }
@@ -103,10 +116,11 @@
   font-size: 1rem;
   line-height: 1.4;
   margin: 0;
-  max-width: 80%; /* Leave space for right sidebar if they overlap, though sidebar is higher */
+  max-width: 80%;
   
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -133,4 +147,3 @@
   background-color: white;
   color: black;
 }
-

@@ -6,7 +6,7 @@ import axios from 'axios';
 import '../../styles/home.css';
 
 const Saved = () => {
-  const { user, loading } = useAuth();
+  const { user, loading, logout } = useAuth();
   const navigate = useNavigate();
   const [savedItems, setSavedItems] = useState([]);
   const [isLoadingItems, setIsLoadingItems] = useState(true);
@@ -51,16 +51,31 @@ const Saved = () => {
     }}>
       <header style={{
         padding: '16px',
-        fontSize: '1.5rem',
-        fontWeight: 'bold',
         borderBottom: '1px solid #333',
-        textAlign: 'center',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
         position: 'sticky',
         top: 0,
         backgroundColor: '#000',
         zIndex: 10
       }}>
-        Saved Videos
+        <span style={{ width: '60px' }}></span>
+        <span style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Saved</span>
+        <button
+          onClick={() => { logout(); navigate('/'); }}
+          style={{
+            background: 'transparent',
+            border: '1px solid #333',
+            color: '#ef4f5f', // Red accent
+            padding: '6px 12px',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            fontSize: '0.9rem'
+          }}
+        >
+          Logout
+        </button>
       </header>
 
       {isLoadingItems ? (

@@ -182,7 +182,28 @@ const Home = () => {
   };
 
   return (
-    <>
+    <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'black', zIndex: 0 }}>
+      {!user && (
+        <Link
+          to="/user/login"
+          style={{
+            position: 'fixed',
+            top: '20px',
+            right: '20px',
+            zIndex: 100,
+            backgroundColor: '#ef4f5f',
+            color: 'white',
+            padding: '10px 20px',
+            borderRadius: '30px',
+            textDecoration: 'none',
+            fontWeight: '600',
+            boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
+            backdropFilter: 'blur(5px)'
+          }}
+        >
+          Login
+        </Link>
+      )}
       <div className="video-feed-container">
         {videos.map((item, index) => (
           <div key={item._id} className="video-card">
@@ -226,7 +247,7 @@ const Home = () => {
         ))}
       </div>
       {user && <BottomNav />}
-    </>
+    </div>
   );
 }
 
